@@ -9,14 +9,13 @@ PNotify.defaults.width = '100%';
 PNotify.defaults.delay = 1500;
 
 
-
 const currentCountry = document.querySelector('input[data-action="search"]');
 const root = document.querySelector('.root');
 currentCountry.addEventListener('input',debounce(sendResult,500));
 
 function sendResult(){
-    if(currentCountry.value.length !== 0){
-        fetchCountries(currentCountry.value)
+    if(currentCountry.value.trim().length !== 0){
+        fetchCountries(currentCountry.value.trim())
         .then(data =>{
             console.log(data);
             if(data.status === 404){
